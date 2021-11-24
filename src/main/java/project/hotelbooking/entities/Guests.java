@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity 
-public class Guest {
+public class Guests {
 	
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
@@ -40,5 +40,12 @@ public class Guest {
   public void setEmail(String email) {
     this.email = email;
     
+    
+    
   }
+
+public Guests() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 }
