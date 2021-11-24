@@ -1,11 +1,10 @@
 package project.hotelbooking.service;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.hotelbooking.crudrepo.GuestsRepo;
 import project.hotelbooking.entities.Guests;
+import project.hotelbooking.exceptions.GuestNotFound;
 
 @Service
 public class GuestsService {
@@ -29,10 +28,10 @@ public class GuestsService {
 	}
 	
 
-	public Optional<Guests> getGuest(Integer id) {
-		return GuestRepository.findById(id); //.orElseThrow(EmployeeNotFound::new);
+	public Guests findById(Integer id) {
+		return GuestRepository.findById(id).orElseThrow(GuestNotFound::new);
 	}
-	
+
 	
 	public String updateGuest(Integer id, Guests s) {
 		try {

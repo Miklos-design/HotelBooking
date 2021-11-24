@@ -1,7 +1,5 @@
 package project.hotelbooking.controllers;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +23,7 @@ public class RoomController {
 	    return roomService.getAllRooms();
 	 }
 	 @GetMapping(path="/{id}")
-		public @ResponseBody Optional<Room> getRoomById(@PathVariable(name = "id") Integer id) {
+		public @ResponseBody Room getRoomById(@PathVariable(name = "id") Integer id) {
 			return roomService.getRoomByNumber(id);
 		}
 	 
