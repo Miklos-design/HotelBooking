@@ -1,7 +1,6 @@
 package project.hotelbooking.service;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +19,10 @@ public class RoomService {
 		
 		public Optional<Room> getRoomByNumber(Integer id) {
 			return Roomrepo.findById(id);
+		}
+		
+		public Iterable <Room> finRoomByType(String type){
+			return Roomrepo.findRoomByType(type);
 		}
 
 }

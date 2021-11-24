@@ -30,7 +30,7 @@ public class GuestsService {
 	
 
 	public Optional<Guests> getGuest(Integer id) {
-		return GuestRepository.findById(id);
+		return GuestRepository.findById(id); //.orElseThrow(EmployeeNotFound::new);
 	}
 	
 	
