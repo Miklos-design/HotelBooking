@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import project.hotelbooking.entities.Guests;
 import project.hotelbooking.entities.Reservation;
-import project.hotelbooking.service.GuestsService;
 import project.hotelbooking.service.ReservationService;
 
 @RestController
@@ -42,14 +40,14 @@ public class ReservationController {
 		}
 	  
 	  @PostMapping(path="/update/{id}")
-		public @ResponseBody String updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 
-	        Guests guest) {
-			return service.updateGuest(id, guest);
+		public @ResponseBody String updateReservation(@PathVariable(name = "id") Integer id, @RequestBody 
+	        Reservation reservation) {
+			return reservations.updateReservation (id, reservation);
 		}
 	  
 	  @DeleteMapping(path="/delete/{id}")
-		public @ResponseBody String deleteGuest(@PathVariable(name = "id") Integer id) {
-			return service.deleteGuest(id);
+		public @ResponseBody String deleteReservation(@PathVariable(name = "id") Integer id) {
+			return reservations.deleteReservation (id);
 		}
 
 }
