@@ -30,7 +30,7 @@ public class Reservation {
 
 	  
 
-	public Reservation(Integer id, String date, String guest_name, Integer room_number, Room room) {
+	public Reservation(Integer id, String date, String guest_name, Integer room_number) {
 		super();
 		this.id = id;
 		this.date = date;

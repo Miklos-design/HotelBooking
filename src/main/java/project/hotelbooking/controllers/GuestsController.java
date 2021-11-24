@@ -17,7 +17,7 @@ import project.hotelbooking.service.GuestsService;
 
 
 @RestController
-@RequestMapping(path="/hotelbooking") 
+@RequestMapping(path="/guests") 
 
 public class GuestsController {
 
