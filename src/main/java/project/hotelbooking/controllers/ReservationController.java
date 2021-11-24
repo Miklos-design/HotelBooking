@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import project.hotelbooking.entities.Guests;
+import project.hotelbooking.entities.Reservation;
 import project.hotelbooking.service.GuestsService;
 import project.hotelbooking.service.ReservationService;
 
@@ -30,14 +31,14 @@ public class ReservationController {
 		  return reservations.addReservation (reservation);
 	  }
 
-	  @GetMapping(path="/allguests")
-	  public @ResponseBody Iterable<Guests> getAllGuests() {
-	    return service.getAllGuests();
+	  @GetMapping(path="/allreservations")
+	  public @ResponseBody Iterable<Reservation> allReservations() {
+	    return reservations.getReservations();
 	  }
 	  
 	  @GetMapping(path="/{id}")
-		public @ResponseBody Optional<Guests> getGuestById(@PathVariable(name = "id") Integer id) {
-			return service.getGuest(id);
+		public @ResponseBody Optional<Reservation> getReservationById(@PathVariable(name = "id") Integer id) {
+			return reservations.getRes(id);
 		}
 	  
 	  @PostMapping(path="/update/{id}")
