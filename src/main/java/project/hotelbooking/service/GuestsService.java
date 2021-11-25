@@ -15,15 +15,11 @@ public class GuestsService {
 	private GuestsRepo GuestRepository;
 	
 	
-	public String addGuest(Guests s) {
-		
-		try {
+	public Guests addGuest(Guests s) {
 			GuestRepository.save(s);
-			return "New Guest is saved";
-		} catch(Exception e) {
-			return "Failed to save";
+			return s;
 		}
-	}
+	
 	
 	public List<Guests> getAllGuests(){
 		return GuestRepository.findAll();
@@ -35,14 +31,10 @@ public class GuestsService {
 	}
 
 	
-	public String updateGuest(Integer id, Guests s) {
-		try {
+	public Guests updateGuest(Integer id, Guests s) {
 			s.setId(id);
 			GuestRepository.save(s);
-			return "Updated";
-		}catch(Exception e) {
-			return "Failed";
-		}
+			return s;
 	}
 	
 	

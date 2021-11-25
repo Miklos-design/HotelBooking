@@ -24,7 +24,7 @@ public class GuestsController {
 	  private GuestsService service;
 
 	  @PostMapping(path="/addguest") 
-	  public @ResponseBody String addNewGuest (@RequestBody Guests guest) {
+	  public @ResponseBody Guests addNewGuest (@RequestBody Guests guest) {
 		  return service.addGuest(guest); 
 	  }
 
@@ -40,7 +40,7 @@ public class GuestsController {
 	  
 	  
 	  @PostMapping(path="/update/{id}")
-		public @ResponseBody String updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 
+		public @ResponseBody Guests updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 
 	        Guests guest) {
 			return service.updateGuest(id, guest);
 		}

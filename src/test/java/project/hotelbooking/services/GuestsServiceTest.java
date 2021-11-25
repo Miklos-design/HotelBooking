@@ -20,7 +20,6 @@ import project.hotelbooking.service.GuestsService;
 @SpringBootTest
 public class GuestsServiceTest {
 
-
 		
 		@MockBean
 		GuestsRepo repo;
