@@ -38,12 +38,12 @@ public class RoomServiceTest {
 	
 	@Test
 	void testFindById() {
-		Optional<Room> testRoom = Optional.of(new Room());
-		// Optional<Room> option = Optional.of(testRoom);
-		when(repo.findById(Integer)1)).thenReturn(testRoom);
-		assertThat(service.getRoomByNumber((Integer) 1)).isEqualTo(testRoom);
+		Room test = new Room();
+		Optional<Room> option = Optional.of(test);
+		when(repo.findById((Integer) 1)).thenReturn(option);
+		assertThat(service.getRoomByNumber((Integer) 1)).isEqualTo(test);
 		verify(repo, times(1)).findById((Integer) 1);
-   }
+	}
 	
 	
 }

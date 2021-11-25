@@ -53,22 +53,22 @@ public class ReservationServiceTest {
 		verify(repo, times(1)).findById((Integer) 1);
 	}
 	
-//
-//	
-//	@Test
-//	void testUpdateGuest() {
-//		Reservation testGuest = new Reservation();			
-//		assertThat(service.updateGuest((Integer) 1, testGuest)).isEqualTo(testGuest);
-//		testGuest.setId((Integer) 1);
-//		verify(repo, times(1)).save(testGuest);
-//	}
-//	
-//	
-//	@Test
-//	void testDeleteGuest() {
-//		when(repo.existsById((Integer) 1)).thenReturn(false);
-//		assertThat(service.deleteGuest((Integer) 1)).isEqualTo(true);
-//		verify(repo, times(1)).deleteById((Integer) 1);
-//	}
+
+	
+	@Test
+	void testUpdate() {
+		Reservation testRes = new Reservation();			
+		assertThat(service.updateReservation((Integer) 1, testRes)).isEqualTo(testRes);
+		testRes.setId((Integer) 1);
+		verify(repo, times(1)).save(testRes);
+	}
+	
+	
+	@Test
+	void testDelete() {
+		when(repo.existsById((Integer) 1)).thenReturn(false);
+		assertThat(service.deleteReservation((Integer) 1)).isEqualTo(true);
+		verify(repo, times(1)).deleteById((Integer) 1);
+	}
 
 }

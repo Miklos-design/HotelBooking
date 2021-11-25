@@ -29,23 +29,16 @@ public class ReservationService {
 		}
 		
 		
-		public String updateReservation(Integer id, Reservation r) {
-			try {
+		public Reservation updateReservation(Integer id, Reservation r) {
 				r.setId(id);
 				reserv.save(r);
-				return "Your booking is Updated";
-			}catch(Exception e) {
-				return "Failed to update reservation infromation";
-			}
-		}
+				return r;
+				}
 		
 		
-		public String deleteReservation(Integer id) {
-			try{
-				reserv.deleteById(id);
-				return "Your booking is deleted from the system";
-			}catch(Exception e) {
-				return "Failed to delete your reservation";
+		public boolean deleteReservation(Integer id) {
+			reserv.deleteById(id);
+				return true;
 			}
-		}
+		
 }

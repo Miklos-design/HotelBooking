@@ -38,13 +38,13 @@ public class ReservationController {
 		}
 	  
 	  @PostMapping(path="/update/{id}")
-		public @ResponseBody String updateReservation(@PathVariable(name = "id") Integer id, @RequestBody 
+		public @ResponseBody Reservation updateReservation(@PathVariable(name = "id") Integer id, @RequestBody 
 	        Reservation reservation) {
 			return reservations.updateReservation (id, reservation);
 		}
 	  
 	  @DeleteMapping(path="/delete/{id}")
-		public @ResponseBody String deleteReservation(@PathVariable(name = "id") Integer id) {
+		public @ResponseBody boolean deleteReservation(@PathVariable(name = "id") Integer id) {
 			return reservations.deleteReservation (id);
 		}
 
