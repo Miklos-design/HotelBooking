@@ -1,9 +1,8 @@
 package project.hotelbooking.crudrepo;
 
-import org.springframework.data.repository.CrudRepository;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import project.hotelbooking.entities.Reservation;
 
-public interface ReservationRepo extends CrudRepository<Reservation, Integer> {
+public interface ReservationRepo extends JpaRepository<Reservation, Integer> {
 
 }

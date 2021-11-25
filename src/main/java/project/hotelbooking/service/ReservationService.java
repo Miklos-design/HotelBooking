@@ -1,12 +1,11 @@
 package project.hotelbooking.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.hotelbooking.crudrepo.ReservationRepo;
 import project.hotelbooking.entities.Reservation;
+import project.hotelbooking.exceptions.ReservationNotFound;
 
 @Service
 
@@ -30,8 +29,8 @@ public class ReservationService {
 		}
 		
 
-		public Optional<Reservation> getRes(Integer id) {
-			return reserv.findById(id);
+		public Reservation getRes(Integer id) {
+			return reserv.findById(id).orElseThrow(ReservationNotFound::new);
 		}
 		
 		

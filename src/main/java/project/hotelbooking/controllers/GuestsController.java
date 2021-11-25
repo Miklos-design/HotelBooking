@@ -1,7 +1,5 @@
 package project.hotelbooking.controllers;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +25,7 @@ public class GuestsController {
 
 	  @PostMapping(path="/addguest") 
 	  public @ResponseBody String addNewGuest (@RequestBody Guests guest) {
-		  return service.addGuest(guest);
+		  return service.addGuest(guest); 
 	  }
 
 	  @GetMapping(path="/allguests")
@@ -36,9 +34,10 @@ public class GuestsController {
 	  }
 	  
 	  @GetMapping(path="/{id}")
-		public @ResponseBody Optional<Guests> getGuestById(@PathVariable(name = "id") Integer id) {
-			return service.getGuest(id);
+		public @ResponseBody Guests getGuestById(@PathVariable(name = "id") Integer id) {
+			return service.findById(id);
 		}
+	  
 	  
 	  @PostMapping(path="/update/{id}")
 		public @ResponseBody String updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 

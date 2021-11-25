@@ -1,11 +1,12 @@
 package project.hotelbooking.service;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.hotelbooking.crudrepo.GuestsRepo;
 import project.hotelbooking.entities.Guests;
+import project.hotelbooking.exceptions.GuestNotFound;
 
 @Service
 public class GuestsService {
@@ -18,21 +19,21 @@ public class GuestsService {
 		
 		try {
 			GuestRepository.save(s);
-			return "saved";
+			return "New Guest is saved";
 		} catch(Exception e) {
-			return "failed";
+			return "Failed to save";
 		}
 	}
-
-	public Iterable<Guests> getAllGuests(){
+	
+	public List<Guests> getAllGuests(){
 		return GuestRepository.findAll();
 	}
 	
 
-	public Optional<Guests> getGuest(Integer id) {
-		return GuestRepository.findById(id); //.orElseThrow(EmployeeNotFound::new);
+	public Guests findById(Integer id) {
+		return GuestRepository.findById(id).orElseThrow(GuestNotFound::new);
 	}
-	
+
 	
 	public String updateGuest(Integer id, Guests s) {
 		try {
