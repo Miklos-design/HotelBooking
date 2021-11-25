@@ -1,9 +1,14 @@
 package project.hotelbooking.crudrepo;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import project.hotelbooking.entities.Guests;
 
-public interface GuestsRepo extends CrudRepository<Guests, Integer> {
+public interface GuestsRepo extends JpaRepository<Guests, Integer> {
+
+	
+	public List<Guests> findGuestsByName(String name);
+
 
 }

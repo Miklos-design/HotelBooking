@@ -1,4 +1,6 @@
 package project.hotelbooking.service;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +19,13 @@ public class GuestsService {
 		
 		try {
 			GuestRepository.save(s);
-			return "saved";
+			return "New Guest is saved";
 		} catch(Exception e) {
-			return "failed";
+			return "Failed to save";
 		}
 	}
-
-	public Iterable<Guests> getAllGuests(){
+	
+	public List<Guests> getAllGuests(){
 		return GuestRepository.findAll();
 	}
 	

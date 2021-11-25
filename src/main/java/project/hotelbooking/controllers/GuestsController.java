@@ -25,7 +25,7 @@ public class GuestsController {
 
 	  @PostMapping(path="/addguest") 
 	  public @ResponseBody String addNewGuest (@RequestBody Guests guest) {
-		  return service.addGuest(guest);
+		  return service.addGuest(guest); 
 	  }
 
 	  @GetMapping(path="/allguests")
