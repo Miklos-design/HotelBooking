@@ -46,7 +46,7 @@ public class GuestsController {
 		}
 	  
 	  @DeleteMapping(path="/delete/{id}")
-		public @ResponseBody String deleteGuest(@PathVariable(name = "id") Integer id) {
+		public @ResponseBody boolean deleteGuest(@PathVariable(name = "id") Integer id) {
 			return service.deleteGuest(id);
 		}
 	  

@@ -23,7 +23,7 @@ public class ReservationController {
 	  private ReservationService reservations;
 
 	  @PostMapping(path="/newreservation") 
-	  public @ResponseBody String addNewRes (@RequestBody Reservation reservation) {
+	  public @ResponseBody Reservation addNewRes (@RequestBody Reservation reservation) {
 		  return reservations.addReservation (reservation);
 	  }
 

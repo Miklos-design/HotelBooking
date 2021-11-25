@@ -42,17 +42,17 @@ public class ReservationServiceTest {
 		assertThat(service.getReservations()).isEqualTo(new ArrayList<>());
 		verify(repo, times(1)).findAll();
 	}
-//	
-//	
-//	@Test
-//	void testFindById() {
-//		Reservation testGuest = new Reservation();
-//		Optional<Reservation> option = Optional.of(testGuest);
-//		when(repo.findById((Integer) 1)).thenReturn(option);
-//		assertThat(service.findById((Integer) 1)).isEqualTo(testGuest);
-//		verify(repo, times(1)).findById((Integer) 1);
-//	}
-//	
+	
+	
+	@Test
+	void testFindById() {
+		Reservation testRes = new Reservation();
+		Optional<Reservation> option = Optional.of(testRes);
+		when(repo.findById((Integer) 1)).thenReturn(option);
+		assertThat(service.getRes((Integer) 1)).isEqualTo(testRes);
+		verify(repo, times(1)).findById((Integer) 1);
+	}
+	
 //
 //	
 //	@Test
