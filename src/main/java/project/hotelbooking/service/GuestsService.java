@@ -38,13 +38,11 @@ public class GuestsService {
 	}
 	
 	
-	public String deleteGuest(Integer id) {
-		try{
+	public boolean deleteGuest(Integer id) {
 			GuestRepository.deleteById(id);
-			return "Deleted";
-		}catch(Exception e) {
-			return "Failed";
-		}
-	}
+			return true;
+			
 	
+	
+}
 }

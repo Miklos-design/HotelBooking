@@ -14,15 +14,10 @@ public class ReservationService {
 		@Autowired
 		private ReservationRepo reserv;
 		
-		public String addReservation(Reservation r) {
-			
-			try {
+		public Reservation addReservation(Reservation r) {
 				reserv.save(r);
-				return "Your booking has been confirmed";
-			} catch(Exception e) {
-				return "Please insert valid reservation infromation";
+				return r;
 			}
-		}
 		
 		public Iterable<Reservation> getReservations(){
 			return reserv.findAll();
