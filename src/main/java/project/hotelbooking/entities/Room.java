@@ -33,14 +33,6 @@ public class Room {
 //	   @OneToOne(mappedBy = "Room")
 //	   private Reservation reservation;
 
-	public Room(Integer room_number, boolean booked, Integer price, String type) {
-		super();
-		this.room_number = room_number;
-		this.booked = booked;
-		this.price = price;
-		this.type = type;	
-		
-	}
 
 
 	public Room() {
