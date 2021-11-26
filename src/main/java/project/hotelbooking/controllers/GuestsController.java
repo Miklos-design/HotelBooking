@@ -43,11 +43,12 @@ public class GuestsController {
 	  
 	  
 	  @PostMapping(path="/update/{id}")
-		public @ResponseBody Guests updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 
+		public @ResponseBody ResponseEntity<Guests> updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 
 	        Guests guest) {
-			return service.updateGuest(id, guest);
+			return new ResponseEntity<>(service.updateGuest(id, guest), HttpStatus.ACCEPTED);
 		}
 	  
+			
 	  @DeleteMapping(path="/delete/{id}")
 		public @ResponseBody boolean deleteGuest(@PathVariable(name = "id") Integer id) {
 			return service.deleteGuest(id);

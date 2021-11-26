@@ -41,10 +41,12 @@ public class ReservationController {
 		}
 	  
 	  @PostMapping(path="/update/{id}")
-		public @ResponseBody Reservation updateReservation(@PathVariable(name = "id") Integer id, @RequestBody 
+		public @ResponseBody ResponseEntity <Reservation> updateReservation(@PathVariable(name = "id") Integer id, @RequestBody 
 	        Reservation reservation) {
-			return reservations.updateReservation (id, reservation);
-		}
+			return new ResponseEntity <>(reservations.updateReservation (id, reservation), HttpStatus.ACCEPTED);
+			
+			 }
+		
 	  
 	  @DeleteMapping(path="/delete/{id}")
 		public @ResponseBody boolean deleteReservation(@PathVariable(name = "id") Integer id) {

@@ -34,7 +34,7 @@ public class ReservationControllerTest {
 	public void testCreate() throws Exception {
 		Reservation test = new Reservation(25, "Nicky", "December 24th 2022", 35);
 		
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/reservations/reservation");
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/reservations/newreservation");
 		mockRequest.contentType(MediaType.APPLICATION_JSON); 
 		//this is not needed for non return types
 		mockRequest.content(this.jsonifier.writeValueAsString(test));
