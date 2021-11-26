@@ -45,5 +45,11 @@ public class RoomServiceTest {
 		verify(repo, times(1)).findById((Integer) 1);
 	}
 	
+	@Test 
+	void getByTypeTest() {
+		String type = "Single";
+		when(repo.findRoomByType(type)).thenReturn(new ArrayList<>());
+		assertThat(service.findByType(type)).isEqualTo(new ArrayList<>());
+	}
 	
 }

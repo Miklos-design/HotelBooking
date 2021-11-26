@@ -29,7 +29,7 @@ public class RoomController {
 	 
 	 @GetMapping(path="/findByType/{type}")
 		public @ResponseBody Iterable<Room> getRoomByType(@PathVariable(name = "type") String type) {
-			return roomService.finRoomByType(type);
+			return roomService.findByType(type);
 		}
 
 
