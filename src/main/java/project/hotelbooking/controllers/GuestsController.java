@@ -42,10 +42,11 @@ public class GuestsController {
 		}
 	  
 	  
+	  
 	  @PostMapping(path="/update/{id}")
 		public @ResponseBody ResponseEntity<Guests> updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 
 	        Guests guest) {
-			return new ResponseEntity<>(service.updateGuest(id, guest), HttpStatus.ACCEPTED);
+			return new ResponseEntity<Guests>(service.updateGuest( id, guest), HttpStatus.ACCEPTED);
 		}
 	  
 			

@@ -24,6 +24,7 @@ public class RoomControllerTest {
 	@Autowired
 	private MockMvc mock;
 
+	
 	@Test
 	public void testgetAll() throws Exception {
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET, "/rooms/allrooms");
@@ -43,4 +44,5 @@ public class RoomControllerTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus);
 	 
 	}
+ 
 }
