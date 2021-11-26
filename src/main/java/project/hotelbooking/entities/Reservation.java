@@ -26,6 +26,7 @@ public class Reservation {
 	  private Integer room_number;
 	  
 		  // room_number is foreign key in existent table
+	  //no need to run the code again as constrain exists
 		  
 //	  @OneToOne(cascade = CascadeType.ALL)
 //	  @JoinColumn(name = "room_number", referencedColumnName = "room_number") 
