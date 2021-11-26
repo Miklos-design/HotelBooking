@@ -20,7 +20,6 @@ import project.hotelbooking.service.GuestsService;
 @SpringBootTest
 public class GuestsServiceTest {
 
-
 		
 		@MockBean
 		GuestsRepo repo;
@@ -57,14 +56,9 @@ public class GuestsServiceTest {
 		
 		@Test
 		void testUpdateGuest() {
-			Guests testGuest = new Guests();
-			when(repo.existsById((Integer) 1)).thenReturn(false, true);
-			
-			assertThat(service.updateGuest((Integer) 1, testGuest)).isEqualTo(true);
-			
+			Guests testGuest = new Guests();			
+			assertThat(service.updateGuest((Integer) 1, testGuest)).isEqualTo(testGuest);
 			testGuest.setId((Integer) 1);
-			verify(repo, times(1)).deleteById((Integer) 1);
-			verify(repo, times(2)).existsById((Integer) 1);
 			verify(repo, times(1)).save(testGuest);
 		}
 		
@@ -74,7 +68,6 @@ public class GuestsServiceTest {
 			when(repo.existsById((Integer) 1)).thenReturn(false);
 			assertThat(service.deleteGuest((Integer) 1)).isEqualTo(true);
 			verify(repo, times(1)).deleteById((Integer) 1);
-			verify(repo, times(1)).existsById((Integer) 1);
 		}
 		
 }

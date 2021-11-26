@@ -1,6 +1,8 @@
 package project.hotelbooking.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,9 +25,10 @@ public class ReservationController {
 	  private ReservationService reservations;
 
 	  @PostMapping(path="/newreservation") 
-	  public @ResponseBody String addNewRes (@RequestBody Reservation reservation) {
-		  return reservations.addReservation (reservation);
+	  public @ResponseBody ResponseEntity <Reservation> addNewRes (@RequestBody Reservation reservation) {
+		  return new ResponseEntity <> (reservations.addReservation (reservation), HttpStatus.CREATED);
 	  }
+		
 
 	  @GetMapping(path="/allreservations")
 	  public @ResponseBody Iterable<Reservation> allReservations() {
@@ -37,14 +40,17 @@ public class ReservationController {
 			return reservations.getRes(id);
 		}
 	  
-	  @PostMapping(path="/update/{id}")
-		public @ResponseBody String updateReservation(@PathVariable(name = "id") Integer id, @RequestBody 
-	        Reservation reservation) {
-			return reservations.updateReservation (id, reservation);
-		}
+	  
+	  @PostMapping("/update/{id}")
+		public ResponseEntity<Reservation> updateReservation(@PathVariable Integer id, @RequestBody Reservation reservation) {
+				return new ResponseEntity<>(reservations.updateReservation (id, reservation), HttpStatus.ACCEPTED);
+	  };
+			
+		
+		
 	  
 	  @DeleteMapping(path="/delete/{id}")
-		public @ResponseBody String deleteReservation(@PathVariable(name = "id") Integer id) {
+		public @ResponseBody boolean deleteReservation(@PathVariable(name = "id") Integer id) {
 			return reservations.deleteReservation (id);
 		}
 

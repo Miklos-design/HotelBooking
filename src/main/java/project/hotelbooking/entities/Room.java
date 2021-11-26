@@ -6,7 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+
 @Entity 
+@Data
 public class Room {
 	 
 	
@@ -30,46 +33,7 @@ public class Room {
 //	   @OneToOne(mappedBy = "Room")
 //	   private Reservation reservation;
 
-	public Room(Integer room_number, boolean booked, Integer price, String type) {
-		super();
-		this.room_number = room_number;
-		this.booked = booked;
-		this.price = price;
-		this.type = type;	
-		
-	}
 
-	public Integer getId() {
-		return room_number;
-	}
-
-	public void setId(Integer id) {
-		this.room_number = id;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
-	public boolean isBooked() {
-		return booked;
-	}
-
-	public void setBooked(boolean booked) {
-		this.booked = booked;
-	}
 
 	public Room() {
 		super();

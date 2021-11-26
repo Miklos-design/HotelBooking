@@ -16,14 +16,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import project.hotelbooking.entities.Guests;
+import project.hotelbooking.entities.Reservation;
 
-	
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles(profiles = "test")
-public class GuestsControllerTest {
+public class ReservationControllerTest {
 
+	
 	@Autowired
 	private MockMvc mock;
 
@@ -32,10 +32,10 @@ public class GuestsControllerTest {
 
 	@Test
 	public void testCreate() throws Exception {
-		Guests test = new Guests(25, "Nicky", "noemail");
+		Reservation test = new Reservation(25, "Nicky", "December 24th 2022", 35);
 		
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/guests/addguest");
-		mockRequest.contentType(MediaType.APPLICATION_JSON);
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/reservations/newreservation");
+		mockRequest.contentType(MediaType.APPLICATION_JSON); 
 		//this is not needed for non return types
 		mockRequest.content(this.jsonifier.writeValueAsString(test));
 		mockRequest.accept(MediaType.APPLICATION_JSON);
@@ -48,24 +48,21 @@ public class GuestsControllerTest {
 	
 	@Test
 	public void testUpdateSuccess() throws Exception {
-		Guests test = new Guests(1,"John","noemailB@no.co.uk");
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/guests/update/1");
+		Reservation test = new Reservation(1,"John","noemailB@no.co.uk", null);
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/reservations/update/10");
 		mockRequest.contentType(MediaType.APPLICATION_JSON);
 		mockRequest.content(this.jsonifier.writeValueAsString(test));
 		mockRequest.accept(MediaType.APPLICATION_JSON);ResultMatcher matchStatus = MockMvcResultMatchers.status().isAccepted();
-		ResultMatcher matchContent = MockMvcResultMatchers.content().json(this.jsonifier.writeValueAsString(test));
-		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
+		this.mock.perform(mockRequest).andExpect(matchStatus);
 		}
 	
 	@Test
 	public void testgetAll() throws Exception {
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET, "/guests/allguests");
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET, "/reservations/allreservations");
 		mockRequest.contentType(MediaType.APPLICATION_JSON);
 		mockRequest.accept(MediaType.APPLICATION_JSON);
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
 		this.mock.perform(mockRequest).andExpect(matchStatus);
-	 }
+	 
+	}
 }
-
-
-

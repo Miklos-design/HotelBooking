@@ -14,15 +14,10 @@ public class ReservationService {
 		@Autowired
 		private ReservationRepo reserv;
 		
-		public String addReservation(Reservation r) {
-			
-			try {
+		public Reservation addReservation(Reservation r) {
 				reserv.save(r);
-				return "Your booking has been confirmed";
-			} catch(Exception e) {
-				return "Please insert valid reservation infromation";
+				return r;
 			}
-		}
 		
 		public Iterable<Reservation> getReservations(){
 			return reserv.findAll();
@@ -34,23 +29,16 @@ public class ReservationService {
 		}
 		
 		
-		public String updateReservation(Integer id, Reservation r) {
-			try {
+		public Reservation updateReservation(Integer id, Reservation r) {
 				r.setId(id);
 				reserv.save(r);
-				return "Your booking is Updated";
-			}catch(Exception e) {
-				return "Failed to update reservation infromation";
-			}
-		}
+				return r;
+				}
 		
 		
-		public String deleteReservation(Integer id) {
-			try{
-				reserv.deleteById(id);
-				return "Your booking is deleted from the system";
-			}catch(Exception e) {
-				return "Failed to delete your reservation";
+		public boolean deleteReservation(Integer id) {
+			reserv.deleteById(id);
+				return true;
 			}
-		}
+		
 }

@@ -21,7 +21,7 @@ public class RoomService {
 			return Roomrepo.findById(id).orElseThrow(RoomNotFound::new);
 		}
 		
-		public Iterable <Room> finRoomByType(String type){
+		public Iterable <Room> findByType(String type){
 			return Roomrepo.findRoomByType(type);
 		}
 

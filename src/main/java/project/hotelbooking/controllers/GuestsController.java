@@ -1,6 +1,8 @@
 package project.hotelbooking.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,10 +26,11 @@ public class GuestsController {
 	  private GuestsService service;
 
 	  @PostMapping(path="/addguest") 
-	  public @ResponseBody String addNewGuest (@RequestBody Guests guest) {
-		  return service.addGuest(guest); 
+	  public @ResponseBody ResponseEntity<Guests> addNewGuest (@RequestBody Guests guest) {
+		  return new ResponseEntity<>(service.addGuest(guest), HttpStatus.CREATED); 
 	  }
-
+	//public ResponseEntity<Employee> create(@RequestBody Employee employee) {
+		//return new ResponseEntity<>(service.create(employee), HttpStatus.CREATED);
 	  @GetMapping(path="/allguests")
 	  public @ResponseBody Iterable<Guests> getAllGuests() {
 	    return service.getAllGuests();
@@ -39,14 +42,16 @@ public class GuestsController {
 		}
 	  
 	  
+	  
 	  @PostMapping(path="/update/{id}")
-		public @ResponseBody String updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 
+		public @ResponseBody ResponseEntity<Guests> updateGuest(@PathVariable(name = "id") Integer id, @RequestBody 
 	        Guests guest) {
-			return service.updateGuest(id, guest);
+			return new ResponseEntity<Guests>(service.updateGuest( id, guest), HttpStatus.ACCEPTED);
 		}
 	  
+			
 	  @DeleteMapping(path="/delete/{id}")
-		public @ResponseBody String deleteGuest(@PathVariable(name = "id") Integer id) {
+		public @ResponseBody boolean deleteGuest(@PathVariable(name = "id") Integer id) {
 			return service.deleteGuest(id);
 		}
 	  
