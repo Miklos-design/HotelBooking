@@ -22,6 +22,7 @@ public class RoomController {
 	  public @ResponseBody Iterable<Room> getAllRooms() {
 	    return roomService.getAllRooms();
 	 }
+	 
 	 @GetMapping(path="/{id}")
 		public @ResponseBody Room getRoomById(@PathVariable(name = "id") Integer id) {
 			return roomService.getRoomByNumber(id);
