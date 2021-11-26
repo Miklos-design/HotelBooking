@@ -1,5 +1,8 @@
 package project.hotelbooking.controllers;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -56,10 +59,17 @@ public class GuestsControllerTest {
 		ResultMatcher matchContent = MockMvcResultMatchers.content().json(this.jsonifier.writeValueAsString(test));
 		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 		}
+	
+	@Test
+	public void testgetAll() throws Exception {
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET, "/guests/allguests");
+		mockRequest.contentType(MediaType.APPLICATION_JSON);
+		//mockRequest.content(this.jsonifier.writeValueAsString(test));
+		mockRequest.accept(MediaType.APPLICATION_JSON);
+		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
+		this.mock.perform(mockRequest).andExpect(matchStatus);
+	 }
 }
 
 
 
-
-
-//@Testpublic void testUpdateFail() throws Exception {Employee testEmp = new Employee(23,"Piersy","B",Date.valueOf("1996-04-10"),"Consultant","PiersyB@no.co.uk");MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/update/23");mockRequest.contentType(MediaType.APPLICATION_JSON);mockRequest.content(this.jsonifier.writeValueAsString(testEmp));mockRequest.accept(MediaType.APPLICATION_JSON);ResultMatcher matchStatus = MockMvcResultMatchers.status().isNotFound();this.mock.perform(mockRequest).andExpect(matchStatus);}
